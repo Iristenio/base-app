@@ -30,12 +30,20 @@ O script pergunta:
 | Nome curto (embaixo do ícone) | `Estoque` |
 | **Dispositivos** | `2` = só celular · `2,3` = celular e PC · `1,2,3` = todos |
 | Cor principal | `#2f6fed` (azul) |
+| **Criar dentro de qual pasta** | `D:\03-PESSOAL` (sugerido) |
 
-E cria `D:\03-PESSOAL\<PASTA>` já configurada, com dependências instaladas e Git iniciado.
+E cria a pasta do projeto já configurada, com dependências instaladas e Git iniciado.
 
-### Jeito 2 — pedindo ao Claude
-Abra o Claude Code em `D:\03-PESSOAL` e peça: *"crie um projeto novo a partir da _BASE-APP"*.
-O Claude vai **perguntar em quais dispositivos** o app será usado (e o resto) antes de criar.
+Também aceita as respostas direto (sem perguntas):
+
+```powershell
+powershell -ExecutionPolicy Bypass -File D:\03-PESSOAL\_BASE-APP\criar-projeto.ps1 -Nome "Controle de Estoque" -NomeCurto "Estoque" -Pasta "CONTROLE-ESTOQUE" -Destino "D:\03-PESSOAL" -Dispositivos "celular,pc" -Cor "#2f6fed"
+```
+
+### Jeito 2 — pedindo ao Claude (skill `/novo-app`)
+Em qualquer pasta, no Claude Code, digite **`/novo-app`** — ou apenas diga *"quero criar um app para…"*.
+O Claude pergunta dispositivos, nome, cor, pasta e se precisa da planilha do Google, cria o projeto
+e conduz o resto (especificação → plano → etapas → publicação).
 
 ---
 
