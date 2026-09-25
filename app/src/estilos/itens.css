@@ -1,0 +1,58 @@
+/* ============ Lista de exemplo (Itens) — modelo para listas do app ============ */
+.adicionar-rapido {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding-left: 14px;
+  margin-bottom: 18px;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+}
+.adicionar-rapido svg { width: 22px; height: 22px; color: var(--primaria); flex: none; }
+.adicionar-rapido .campo { background: transparent; border: none; min-height: 54px; }
+
+.lista-itens { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.linha-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  min-height: 64px;
+  padding: 8px 14px;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  text-align: left;
+  cursor: pointer;
+}
+.lista-itens.compacta .linha-item { min-height: 52px; border: none; background: var(--superficie-2); }
+.linha-item-texto { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.linha-item-texto strong { font-weight: 550; overflow-wrap: anywhere; }
+.linha-item-texto small { color: var(--texto-2); font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.linha-item.concluido .linha-item-texto strong { text-decoration: line-through; color: var(--texto-2); }
+
+.check {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.check svg {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2.5px solid var(--primaria);
+  fill: none;
+  stroke: transparent;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.linha-item.concluido .check svg { background: var(--sucesso); border-color: var(--sucesso); stroke: #fff; }
+
+.cartao h2 .contagem { margin-left: auto; }
+.aviso-acao { bottom: 110px; }
