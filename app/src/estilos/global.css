@@ -23,6 +23,8 @@
   --fonte: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 }
 
+/* Tema: segue o sistema; em Ajustes dá para fixar claro (data-tema="claro") ou escuro (data-tema="escuro").
+   Os dois blocos abaixo têm os MESMOS valores — ao mudar um, mude o outro. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-tema='claro']) {
     color-scheme: dark;
@@ -41,6 +43,24 @@
     --sucesso: #4cc38a;
     --sombra: 0 8px 28px rgba(0, 0, 0, 0.5);
   }
+}
+
+:root[data-tema='escuro'] {
+  color-scheme: dark;
+  --fundo: #111418;
+  --superficie: #1a1e24;
+  --superficie-2: #232831;
+  --borda: #2e3440;
+  --texto: #e8ebf0;
+  --texto-2: #9aa3b2;
+  --primaria: color-mix(in srgb, var(--primaria-app, #2f6fed) 65%, white);
+  --primaria-texto: #0b1220;
+  --primaria-suave: color-mix(in srgb, var(--primaria-app, #2f6fed) 25%, #111418);
+  --perigo: #ff6b6b;
+  --perigo-suave: #3a1e22;
+  --aviso: #e0a84a;
+  --sucesso: #4cc38a;
+  --sombra: 0 8px 28px rgba(0, 0, 0, 0.5);
 }
 
 /* ============ Base ============ */

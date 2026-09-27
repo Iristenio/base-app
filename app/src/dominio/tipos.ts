@@ -42,11 +42,16 @@ export interface ItemFila {
   criado_em: string;
 }
 
+/** Aparência: seguir o sistema do aparelho ou fixar claro/escuro. */
+export type Tema = 'sistema' | 'claro' | 'escuro';
+
 /** Preferências do usuário (valem por aparelho). */
 export interface Config {
+  tema: Tema;
   primeiro_dia_semana: 0 | 1; // 0 = domingo, 1 = segunda
 }
 
 export const CONFIG_PADRAO: Config = {
+  tema: 'sistema',
   primeiro_dia_semana: 0,
 };

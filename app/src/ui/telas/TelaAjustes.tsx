@@ -1,12 +1,13 @@
 // Tela Ajustes: conexão com o Google, preferências e informações do aparelho.
 import { useEffect, useState } from 'preact/hooks';
-import type { Config } from '../../dominio/tipos';
+import type { Config, Tema } from '../../dominio/tipos';
 import { salvarConfig } from '../../dados/repositorio';
 import { useConfig } from '../../dados/ganchos';
 import { baixarTudo, conectar, desconectar, ErroApi, sincronizar } from '../../sync/motor';
 import { APP } from '../../app.config';
 import { descreverUltimaSync, ROTULO_STATUS, useSync } from '../../sync/ganchos';
 import { useEstado } from '../estado';
+import { aplicarTema } from '../tema';
 
 export function TelaAjustes() {
   return (
@@ -136,14 +137,34 @@ function CartaoGoogle() {
 
 /* ---------------- Preferências ---------------- */
 
+const TEMAS: { valor: Tema; rotulo: string }[] = [
+  { valor: 'sistema', rotulo: 'Sistema' },
+  { valor: 'claro', rotulo: 'Claro' },
+  { valor: 'escuro', rotulo: 'Escuro' },
+];
+
 function CartaoPreferencias() {
   const config = useConfig();
   const mudar = (parcial: Partial<Config>) => salvarConfig(parcial);
+  const escolherTema = (tema: Tema) => {
+    aplicarTema(tema);
+    mudar({ tema });
+  };
 
   return (
     <section class="cartao">
       <h2>Preferências</h2>
       <div class="preferencias">
+        <label>
+          <span>Tema</span>
+          <div class="segmentado pequeno" role="radiogroup" aria-label="Tema">
+            {TEMAS.map((t) => (
+              <button key={t.valor} type="button" role="radio" aria-checked={config.tema === t.valor} onClick={() => escolherTema(t.valor)}>
+                {t.rotulo}
+              </button>
+            ))}
+          </div>
+        </label>
         <label>
           <span>A semana começa no</span>
           <div class="segmentado pequeno">
@@ -156,7 +177,7 @@ function CartaoPreferencias() {
           </div>
         </label>
       </div>
-      <p class="dica">As preferências valem para este aparelho.</p>
+      <p class="dica">As preferências valem para este aparelho. “Sistema” acompanha o modo claro/escuro do aparelho.</p>
     </section>
   );
 }

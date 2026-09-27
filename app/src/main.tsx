@@ -1,7 +1,8 @@
 import { render } from 'preact';
 import { App } from './ui/App';
 import { APP, somenteCelular, somentePc, usaDispositivo } from './app.config';
-import { garantirDadosIniciais, pedirArmazenamentoPersistente } from './dados/repositorio';
+import { garantirDadosIniciais, lerConfig, pedirArmazenamentoPersistente } from './dados/repositorio';
+import { aplicarTema } from './ui/tema';
 import { iniciarSincronizacao } from './sync/motor';
 import './estilos/global.css';
 import './estilos/formularios.css';
@@ -16,6 +17,7 @@ html.classList.toggle('com-pc', usaDispositivo('pc'));
 html.style.setProperty('--primaria-app', APP.corPrimaria);
 document.title = APP.nome;
 
+lerConfig().then((c) => aplicarTema(c.tema));
 garantirDadosIniciais().then(() => iniciarSincronizacao());
 pedirArmazenamentoPersistente();
 

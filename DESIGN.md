@@ -13,7 +13,15 @@ Objetivo: apps **agradáveis ao toque**, legíveis, com o mesmo "jeito" em todos
 | `--raio` (14 px) | Cantos arredondados |
 | `--toque` (48 px; 40 px só-PC) | Altura mínima de qualquer alvo de toque |
 
-Tema escuro automático (segue o sistema). **Nunca** use cores fixas em componentes — use os tokens.
+**Tema:** segue o sistema (claro/escuro) por padrão, e o usuário pode fixar **Sistema / Claro / Escuro** em
+**Ajustes → Preferências** (vale por aparelho). Como funciona:
+- `global.css` tem os tokens do tema escuro em **dois blocos com os mesmos valores** — `@media (prefers-color-scheme: dark)`
+  (quando segue o sistema) e `:root[data-tema='escuro']` (quando fixado). Ao mudar uma cor escura, mude nos dois.
+- `ui/tema.ts` → `aplicarTema()` põe `data-tema` no `<html>` e guarda uma cópia no `localStorage`; um script curto no
+  `index.html` reaplica o tema **antes de desenhar**, para o app não "piscar" no tema errado ao abrir.
+- A preferência oficial é `Config.tema` (IndexedDB, não sincroniza: cada aparelho escolhe o seu).
+
+**Nunca** use cores fixas em componentes — use os tokens (senão o componente fica errado num dos temas).
 
 ## Estrutura da tela
 
