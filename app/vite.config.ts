@@ -1,7 +1,7 @@
 ﻿import { defineConfig } from 'vitest/config';
 import preact from '@preact/preset-vite';
 import { VitePWA } from 'vite-plugin-pwa';
-import { APP, somenteCelular } from './src/app.config';
+import { APP, somenteCelular } from './src/app.config.ts';
 
 // No GitHub Pages o app fica em https://<usuario>.github.io/<repositorio>/ (o workflow define BASE_PATH)
 const BASE = process.env.BASE_PATH ?? '/';

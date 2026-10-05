@@ -11,6 +11,9 @@ export interface AppDB extends DBSchema {
   config: { key: string; value: { chave: string; valor: unknown } };
 }
 
+// Nome PRÓPRIO de cada app: no GitHub Pages todos os apps ficam em iristenio.github.io e dividem o
+// mesmo IndexedDB — com nomes iguais, um app leria/apagaria os dados do outro.
+// O criar-projeto.ps1 troca 'app' pelo nome da pasta do projeto. Nunca mude depois de publicado.
 export const NOME_BANCO = 'app';
 const VERSAO = 1;
 

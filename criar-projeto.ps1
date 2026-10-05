@@ -78,6 +78,10 @@ $t = $t -replace "corPrimaria: '[^']*'", "corPrimaria: '$cor'"
 $t = $t -replace "dispositivos: \[[^\]]*\]", "dispositivos: [$lista]"
 Gravar-Texto $cfg $t
 
+# Banco local com nome próprio (todos os apps em iristenio.github.io dividem o mesmo IndexedDB)
+$db = Join-Path $destino 'app\src\dados\db.ts'
+Gravar-Texto $db ((Ler-Texto $db) -replace "export const NOME_BANCO = 'app';", "export const NOME_BANCO = '$($pasta.ToLower())';")
+
 $pkg = Join-Path $destino 'app\package.json'
 Gravar-Texto $pkg ((Ler-Texto $pkg) -replace '"name": "[^"]*"', ('"name": "' + $pasta.ToLower() + '"'))
 

@@ -6,8 +6,9 @@
     <meta name="theme-color" content="#2f6fed" />
     
     <script>
-      // Tema escolhido em Ajustes (cópia rápida do valor salvo no aparelho), aplicado antes de desenhar
-      try { var t = localStorage.getItem('tema'); if (t === 'claro' || t === 'escuro') document.documentElement.dataset.tema = t; } catch (e) {}
+      // Tema escolhido em Ajustes (cópia rápida do valor salvo no aparelho), aplicado antes de desenhar.
+      // Mesma chave de chaveTema() em src/ui/tema.ts (uma por app, pela 1ª pasta do endereço).
+      try { var t = localStorage.getItem('tema:' + location.pathname.split('/')[1]); if (t === 'claro' || t === 'escuro') document.documentElement.dataset.tema = t; } catch (e) {}
     </script>
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />

@@ -74,6 +74,10 @@ npm run icones    # regenera os ícones a partir de public/favicon.svg
 
 ## Cuidados aprendidos (não repetir)
 
+- Todos os apps publicados ficam em `iristenio.github.io` e **dividem o mesmo IndexedDB e localStorage**.
+  Por isso o banco tem nome próprio (`NOME_BANCO` em `dados/db.ts`, preenchido pelo `criar-projeto.ps1`)
+  e a chave do tema usa o nome do repositório (`chaveTema()` em `ui/tema.ts`). Não volte a usar nomes fixos.
+
 - `ScriptApp.getService().getUrl()` no editor devolve o endereço **/dev** (exige login) — use `URL_PUBLICA`.
 - Ao adicionar escopos no Apps Script: `clasp push` → usuário executa `configurar()` e autoriza →
   **só então** `clasp update-deployment` (senão a sincronização para).
