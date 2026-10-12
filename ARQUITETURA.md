@@ -74,6 +74,14 @@ npm run icones    # regenera os ícones a partir de public/favicon.svg
 
 ## Cuidados aprendidos (não repetir)
 
+- **Um endereço (origem) por app.** Em out/2026, nos celulares Xiaomi/Poco (HyperOS, Chrome 154), nenhum
+  PWA **novo** em `iristenio.github.io/<repo>/` instalava: o Chrome dizia "Esse app já está instalado" e
+  depois "Não foi possível abrir o aplicativo" (sem nada em `chrome://webapks`). Os apps antigos dessa
+  origem continuaram funcionando; tablet Samsung instalava; limpar o cache do Chrome não resolveu; em
+  outra origem instalou na hora. Por isso cada app fica numa organização própria, no repositório
+  `<organização>.github.io` (o workflow publica na raiz quando o repositório termina em `.github.io`).
+  Bônus: cada app passa a ter IndexedDB/localStorage só seus.
+
 - Todos os apps publicados ficam em `iristenio.github.io` e **dividem o mesmo IndexedDB e localStorage**.
   Por isso o banco tem nome próprio (`NOME_BANCO` em `dados/db.ts`, preenchido pelo `criar-projeto.ps1`)
   e a chave do tema usa o nome do repositório (`chaveTema()` em `ui/tema.ts`). Não volte a usar nomes fixos.

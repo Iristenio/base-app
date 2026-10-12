@@ -74,16 +74,23 @@ npm run dev
 
 ---
 
-## 4. Publicar (GitHub Pages)
+## 4. Publicar (GitHub Pages) — cada app no seu próprio endereço
 
-1. Crie um repositório **público** vazio em https://github.com/new (sem README).
-2. Em **Settings → Pages → Source**, escolha **GitHub Actions**.
-3. Conecte e envie (o Claude pode fazer isso por você):
+Cada app ganha uma **organização** própria no GitHub (grátis), e o app fica no endereço principal dela
+(ex.: `https://repertorio-paulo.github.io/`). **Não publique apps novos em `iristenio.github.io/<repo>/`**:
+nos celulares Xiaomi/Poco o Chrome não instala apps **novos** desse endereço (ver ARQUITETURA.md).
+
+1. Crie a organização em https://github.com/account/organizations/new → plano **Free** → um nome curto,
+   em minúsculas, com hífens (ex.: `estoque-loja`).
+2. Dentro dela, crie um repositório **público** vazio (sem README) com o nome **`<organização>.github.io`**
+   (ex.: `estoque-loja.github.io`). Esse nome faz o app ficar na raiz do endereço.
+3. No repositório: **Settings → Pages → Source → GitHub Actions**.
+4. Conecte e envie (o Claude pode fazer isso por você):
    ```powershell
-   git remote add origin https://github.com/Iristenio/<repositorio>.git
+   git remote add origin https://github.com/<organização>/<organização>.github.io.git
    git push -u origin main
    ```
-4. Em ~1 minuto o app estará em `https://iristenio.github.io/<repositorio>/`.
+5. Em ~1 minuto (se o GitHub não estiver lento) o app estará em `https://<organização>.github.io/`.
    No aparelho: abra o endereço → menu ⋮ → **Instalar app**.
 
 ---
