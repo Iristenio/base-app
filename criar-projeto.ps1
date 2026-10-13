@@ -1,4 +1,4 @@
-﻿# ============================================================================
+# ============================================================================
 #  Cria um projeto novo a partir desta base.
 #
 #  Interativo (pergunta tudo):
@@ -85,6 +85,15 @@ Gravar-Texto $db ((Ler-Texto $db) -replace "export const NOME_BANCO = 'app';", "
 $pkg = Join-Path $destino 'app\package.json'
 Gravar-Texto $pkg ((Ler-Texto $pkg) -replace '"name": "[^"]*"', ('"name": "' + $pasta.ToLower() + '"'))
 
+# Ícone padrão e barra do sistema na cor escolhida; título da página com o nome do app
+$favicon = Join-Path $destino 'app\public\favicon.svg'
+Gravar-Texto $favicon ((Ler-Texto $favicon) -ireplace '#2f6fed', $cor)
+$html = Join-Path $destino 'app\index.html'
+$t = Ler-Texto $html
+$t = $t -ireplace '<meta name="theme-color" content="#[0-9a-f]{6}" />', "<meta name=`"theme-color`" content=`"$cor`" />"
+$t = $t -replace '<title>[^<]*</title>', "<title>$($nome.Trim())</title>"
+Gravar-Texto $html $t
+
 $conf = Join-Path $destino 'backend\configurar.js'
 Gravar-Texto $conf ((Ler-Texto $conf) -replace "var NOME_PLANILHA = '[^']*'", "var NOME_PLANILHA = '$($nome.Trim()) - dados'")
 
@@ -97,6 +106,7 @@ git init -b main | Out-Null
 Push-Location app
 Write-Host 'Instalando dependencias (1-2 minutos)...' -ForegroundColor Cyan
 npm install --no-fund --no-audit | Out-Null
+npm run icones | Out-Null
 Pop-Location
 # Autor dos commits: usa o configurado no computador; se não houver, o mesmo da base
 if (-not (git config user.name)) {

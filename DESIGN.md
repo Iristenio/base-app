@@ -69,3 +69,13 @@ Objetivo: apps **agradáveis ao toque**, legíveis, com o mesmo "jeito" em todos
 5. **Textos em português do Brasil**, datas no formato brasileiro (`Intl.DateTimeFormat('pt-BR')`).
 6. **Testar** em 1333×800 (tablet paisagem), 800×1333 (retrato) e 375×812 (celular), conferindo que
    painéis e listas longas **rolam** e que nada passa da largura da tela.
+
+## Ícone do app
+
+- O desenho fica em `app/public/favicon.svg` (512×512, fundo com `rx="112"` na cor principal, símbolo em branco
+  ocupando o centro, com margem: o Android recorta o ícone em círculo).
+- A base traz um ícone **neutro** (quatro quadrados). **Todo app novo deve ganhar o seu** (ex.: calendário para
+  uma agenda, cadeado para um cofre de senhas) — o `/novo-app` pergunta qual.
+- Depois de mudar o SVG: `npm run icones` (gera os PNGs; o fundo do ícone "maskable" usa `corPrimaria` do
+  `app.config.ts`) e confira os PNGs gerados em `public/`.
+- Aparelhos com o app já instalado podem levar um ou dois dias para mostrar o ícone novo (ou reinstale).
