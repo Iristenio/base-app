@@ -235,3 +235,23 @@ p.erros { padding-left: 16px; }
 }
 .grade-horas-sel button[aria-pressed='true'],
 .grade-minutos-sel button[aria-pressed='true'] { background: var(--primaria); color: var(--primaria-texto); }
+
+/* ---- Janelas (diálogo de confirmação do Dialogo.tsx e listas em janela) ---- */
+.dialogo-veu {
+  position: fixed; inset: 0; z-index: 60;
+  display: flex; align-items: center; justify-content: center; padding: 16px;
+  background: rgba(10, 15, 25, 0.45);
+  animation: dialogo-aparecer 0.15s ease-out;
+}
+.dialogo {
+  width: min(440px, 100%); max-height: calc(100dvh - 32px);
+  display: flex; flex-direction: column; gap: 14px; padding: 22px;
+  border-radius: var(--raio); background: var(--superficie); color: var(--texto); box-shadow: var(--sombra);
+}
+.dialogo h2 { margin: 0; font-size: 19px; }
+.dialogo p { margin: 0; color: var(--texto-2); }
+.dialogo-opcoes { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+.dialogo.largo { width: min(560px, 100%); }
+.dialogo-topo { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+@keyframes dialogo-aparecer { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .dialogo-veu { animation: none; } }

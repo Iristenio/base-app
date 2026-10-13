@@ -54,6 +54,7 @@ Objetivo: apps **agradáveis ao toque**, legíveis, com o mesmo "jeito" em todos
 | `.erros` | formularios.css | Erros de validação |
 | `avisar({ texto, desfazer })` | estado.tsx | Confirmação rápida com **Desfazer** (toda ação destrutiva) |
 | `perguntar(titulo, opcoes)` | estado.tsx | Escolha obrigatória (ex.: "Excluir?") |
+| `.dialogo-veu` + `.dialogo` (`.largo`, `.dialogo-topo`) | formularios.css | Janela por cima de tudo (usada pelo `perguntar`; serve para listas). Dentro de um cartão, desenhe com `createPortal(…, document.body)` |
 | `.vazio` | global.css | Estado vazio de listas/telas |
 | `.adicionar-rapido`, `.lista-itens`, `.linha-item`, `.check` | itens.css | Listas com criação rápida e "concluir com um toque" |
 
