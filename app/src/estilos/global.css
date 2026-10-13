@@ -234,6 +234,9 @@ h1, h2, h3 { margin: 0; line-height: 1.2; }
   background: var(--superficie-2);
 }
 .botao.primario { background: var(--primaria); color: var(--primaria-texto); }
+.botao.fantasma { background: transparent; color: var(--primaria); }
+.botao svg { width: 20px; height: 20px; flex: none; }
+.botao-icone:disabled { opacity: 0.45; cursor: default; } /* .botao:disabled fica em ajustes.css */
 
 /* ---- Botão "+" flutuante ---- */
 .novo {
@@ -330,6 +333,9 @@ h1, h2, h3 { margin: 0; line-height: 1.2; }
   left: 50%;
   bottom: 24px;
   transform: translateX(-50%);
+  /* Sem width, o "left: 50%" limita o aviso a metade da tela (fica espremido no celular) */
+  width: max-content;
+  max-width: calc(100vw - 32px);
   display: flex;
   align-items: center;
   gap: 16px;

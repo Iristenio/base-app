@@ -55,9 +55,6 @@ function Estrutura() {
           <ConteudoPainel painel={painel} />
         </PainelLateral>
       )}
-      <AvisoDesfazer />
-      <AvisoAtualizacao />
-      <Dialogo />
     </div>
   );
 }
@@ -66,6 +63,10 @@ export function App() {
   return (
     <ProvedorEstado>
       <Estrutura />
+      {/* Fora da Estrutura: continuam funcionando se o app ganhar telas fora dela (ex.: login, tela de bloqueio) */}
+      <AvisoDesfazer />
+      <AvisoAtualizacao />
+      <Dialogo />
     </ProvedorEstado>
   );
 }

@@ -51,6 +51,7 @@ Objetivo: apps **agradáveis ao toque**, legíveis, com o mesmo "jeito" em todos
 | `.interruptor` | formularios.css | Sim/não |
 | `CampoHora` | componentes/CampoHora.tsx | **Qualquer horário** (não use `<input type="time">`) |
 | `.alerta` | formularios.css | Aviso amarelo dentro do formulário |
+| `.botao.fantasma` | global.css | Ação secundária discreta (ex.: "Cancelar" nos diálogos) |
 | `.erros` | formularios.css | Erros de validação |
 | `avisar({ texto, desfazer })` | estado.tsx | Confirmação rápida com **Desfazer** (toda ação destrutiva) |
 | `perguntar(titulo, opcoes)` | estado.tsx | Escolha obrigatória (ex.: "Excluir?") |

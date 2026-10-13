@@ -92,3 +92,6 @@ npm run icones    # regenera os ícones a partir de public/favicon.svg
 - Grade CSS de tela cheia: use `minmax(0, 1fr)` nas linhas/colunas, senão o conteúdo estica a tela e
   some a rolagem.
 - `<input type="time">` corta botões no Android em paisagem — use `CampoHora`.
+- `AvisoDesfazer`, `AvisoAtualizacao` e `Dialogo` ficam em `App` (fora da `Estrutura`): telas que não usam a
+  estrutura (ex.: tela de bloqueio/login) também podem usar `avisar()` e `perguntar()`.
+- `.aviso` (rodapé) usa `width: max-content`: com `left: 50%` sem largura, ele ficava espremido no celular.
